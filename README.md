@@ -1,6 +1,6 @@
 # Sticky Notes React
 
-A simple sticky notes component built with React and no other dependencies.
+A simple sticky notes component built with React and ***no dependencies*** apart from React.
 
 ## Installation
 
