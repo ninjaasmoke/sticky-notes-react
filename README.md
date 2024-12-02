@@ -10,6 +10,34 @@ npm install sticky-notes-react
 
 ## Usage
 
+### Add the StickyNotes component
+
+```jsx
+
+// in a top level component like layout.tsx (nextJS) or App.tsx (create-react-app)
+
+"use client"
+
+import { StickyNotes } from "sticky-notes-react";
+import "./globals.css";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <StickyNotes />
+      </body>
+    </html>
+  );
+}
+
+```
+
 #### Add a note
 
 ```jsx
@@ -18,7 +46,6 @@ import { StickyNotes, stickyNotes } from "sticky-notes-react";
 export default function Home() {
   return (
     <div>
-      <StickyNotes />
 
       <button
         onClick={() => {
@@ -38,7 +65,6 @@ export default function Home() {
 export default function Home() {
   return (
     <div>
-      <StickyNotes />
 
       <button
         onClick={() => {
@@ -65,7 +91,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-8 items-center p-8 font-[family-name:var(--font-geist-sans)]">
-      <StickyNotes />
 
       <button
         onClick={() => {
