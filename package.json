@@ -1,0 +1,39 @@
+{
+  "name": "sticky-notes-react",
+  "version": "1.0.0",
+  "description": "a sticky notes component for react written in typescript",
+  "main": "dist/StickyNotes.js",
+  "types": "dist/StickyNotes.d.ts",
+  "module": "dist/StickyNotes.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "react",
+    "sticky-notes",
+    "component"
+  ],
+  "author": "ninjaasmoke",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "babel-loader": "^9.2.1",
+    "copyfiles": "^2.4.1",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
