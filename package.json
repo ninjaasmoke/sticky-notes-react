@@ -1,6 +1,6 @@
 {
   "name": "sticky-notes-react",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "a sticky notes component for react written in typescript",
   "main": "dist/StickyNotes.js",
   "types": "dist/StickyNotes.d.ts",
