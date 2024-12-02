@@ -41,7 +41,7 @@ export default function RootLayout({
 #### Add a note
 
 ```jsx
-import { StickyNotes, stickyNotes } from "sticky-notes-react";
+import { stickyNotes } from "sticky-notes-react";
 
 export default function Home() {
   return (
@@ -84,7 +84,7 @@ export default function Home() {
 #### Full Example
 
 ```tsx
-import { StickyNotes, stickyNotes } from "sticky-notes-react";
+import { stickyNotes } from "sticky-notes-react";
 
 export default function Home() {
   const [noteId, setNoteId] = useState<string | null>(null);
