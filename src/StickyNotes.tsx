@@ -9,6 +9,11 @@ interface Note {
     textBoxColor?: string;
 }
 
+interface AddNoteOptions {
+    title?: string;
+    content?: string;
+}
+
 const noteColors: Record<string, string> = {
     "#ffb3ba": "#e6a1a7",
     "#ffdfba": "#e6c9a7",
@@ -61,7 +66,7 @@ class StickyNotesManager {
         return StickyNotesManager.instance;
     }
 
-    public addNote(title: string = "New Note", content: string = 'start typing here...'): string {
+    public addNote({ title = "New Note", content = 'start typing here...' }: AddNoteOptions = {}): string {
         const [noteColor, textBoxColor] = getRandomColorPair();
         const newNote: Note = {
             id: `note-${Date.now()}`,
