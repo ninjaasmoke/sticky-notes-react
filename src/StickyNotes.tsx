@@ -7,26 +7,28 @@ interface Note {
     position: { x: number; y: number };
     noteColor?: string;
     textBoxColor?: string;
+    textColor?: string;
 }
 
 interface AddNoteOptions {
     title?: string;
     content?: string;
+    colors?: { noteColor: string; textBoxColor: string, textColor: string };
 }
 
-const noteColors: Record<string, string> = {
-    "#ffb3ba": "#e6a1a7",
-    "#ffdfba": "#e6c9a7",
-    "#ffffba": "#e6e6a7",
-    "#baffc9": "#a7e5b5",
-    "#bae1ff": "#a7cbe6",
-    "#b3b3b3": "#a1a1a1",
-    "#ffb3ff": "#e6a7e6",
-    "#c9c9ff": "#b5b5e5",
-    "#ffbaff": "#e6a7e6",
-    "#c9ffc9": "#b5e5b5",
-    "#ffc9c9": "#e5b5b5"
-};
+const noteColors: [string, string, string][] = [
+    ["#ffb3ba", "#e6a1a7", "#000000"],
+    ["#ffdfba", "#e6c9a7", "#000000"],
+    ["#ffffba", "#e6e6a7", "#000000"],
+    ["#baffc9", "#a7e5b5", "#000000"],
+    ["#bae1ff", "#a7cbe6", "#000000"],
+    ["#b3b3b3", "#a1a1a1", "#000000"],
+    ["#ffb3ff", "#e6a7e6", "#000000"],
+    ["#c9c9ff", "#b5b5e5", "#000000"],
+    ["#ffbaff", "#e6a7e6", "#000000"],
+    ["#c9ffc9", "#b5e5b5", "#000000"],
+    ["#ffc9c9", "#e5b5b5", "#000000"]
+];
 
 const CloseButton: React.FC = () => {
     return (
@@ -42,10 +44,10 @@ const CloseButton: React.FC = () => {
     )
 };
 
-function getRandomColorPair(): [string, string] {
+function getRandomColor(): [string, string, string] {
     const entries = Object.entries(noteColors);
     const randomIndex = Math.floor(Math.random() * entries.length);
-    return entries[randomIndex];
+    return entries[randomIndex][1];
 }
 class StickyNotesManager {
     private static instance: StickyNotesManager;
@@ -66,8 +68,10 @@ class StickyNotesManager {
         return StickyNotesManager.instance;
     }
 
-    public addNote({ title = "New Note", content = 'start typing here...' }: AddNoteOptions = {}): string {
-        const [noteColor, textBoxColor] = getRandomColorPair();
+    public addNote({ title = "New Note", content = 'start typing here...', colors }: AddNoteOptions = {}): string {
+        const [noteColor, textBoxColor, textColor] = colors
+            ? [colors.noteColor, colors.textBoxColor, colors.textColor]
+            : getRandomColor();
         const newNote: Note = {
             id: `note-${Date.now()}`,
             title,
@@ -77,7 +81,8 @@ class StickyNotesManager {
                 y: this.randomRange(150, window.innerHeight - 400),
             },
             noteColor,
-            textBoxColor
+            textBoxColor,
+            textColor
         };
         this._notes.push(newNote);
         this._notify();
@@ -227,11 +232,11 @@ export function StickyNotes() {
                             style={{
                                 fontSize: '1rem',
                                 fontFamily: 'inherit',
-                                color: 'inherit',
                                 border: 'none',
                                 width: '100%',
                                 outline: 'none',
                                 backgroundColor: note.textBoxColor,
+                                color: note.textColor ?? 'inherit',
                                 boxSizing: 'border-box',
                                 marginBottom: '4px',
                                 padding: '2px 4px',
@@ -251,7 +256,7 @@ export function StickyNotes() {
                             style={{
                                 fontSize: '1rem',
                                 fontFamily: 'inherit',
-                                color: 'inherit',
+                                color: note.textColor ?? 'inherit',
                                 border: 'none',
                                 flex: 1,
                                 width: '100%',
