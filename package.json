@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "build": "tsc",
-    "minor": "npm version minor && npm run build && npm run copy && npm publish",
-    "major": "npm version major && npm run build && npm run copy && npm publish",
-    "patch": "npm version patch && npm run build && npm run copy && npm publish"
+    "minor": "npm version minor && npm run build && npm publish",
+    "major": "npm version major && npm run build && npm publish",
+    "patch": "npm version patch && npm run build && npm publish"
   },
   "keywords": [
     "react",
